@@ -1,0 +1,147 @@
+$primary: #091f36;
+$secondary: #4f5f76;
+
+$active: rgba(23, 190, 187, 0.8);
+$busy: rgba(252, 100, 113, 0.8);
+$away: rgba(255, 253, 130, 0.8);
+
+.container {
+    background: $primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    h1 {
+        margin: 0.5em auto;
+        color: #FFF;
+        text-align: center;
+    }
+}
+
+.chatbox {
+    background: rgba(255, 255, 255, 0.05);
+    width: 600px;
+    height: 550px;
+    border-radius: 0.2em;
+    position: relative;
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
+    &__messages {
+        .chatbox__messages__user-message--ind-message {
+            float: left;
+        }
+    }
+    &__messages__user-message {
+        width: 480px;
+        max-height: 503px;
+        overflow-y: auto;
+    }
+    &__messages__user-message--ind-message {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 1em 0;
+        height: auto;
+        width: 65%;
+        border-radius: 5px;
+        margin: 1em 1em;
+        overflow: auto;
+        & > p.name {
+            color: #FFF;
+            font-size: 1em;
+        }
+        & > p.message {
+            color: #FFF;
+            font-size: 0.7em;
+            margin: 0 2.8em;
+        }
+    }
+    &__user-list {
+        background: rgba(255, 255, 255, 0.1);
+        width: 20%;
+        height: 100%;
+        float: right;
+        border-top-right-radius: 0.2em;
+        border-bottom-right-radius: 0.2em;
+        h1 {
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9em;
+            padding: 1em;
+            margin: 0;
+            font-weight: 300;
+            text-align: center;
+        }
+    }
+    &__user {
+        width: 0.5em;
+        height: 0.5em;
+        border-radius: 100%;
+        margin: 1em 0.7em;
+        &--active {
+            @extend .chatbox__user;
+            background: $active;
+        }
+        &--busy {
+            @extend .chatbox__user;
+            background: $busy;
+        }
+        &--away {
+            @extend .chatbox__user;
+            background: $away;
+        }
+    }
+    p {
+        float: left;
+        text-align: left;
+        margin: -0.25em 2em;
+        font-size: 0.7em;
+        font-weight: 300;
+        color: #FFF;
+        width: 200px;
+    }
+    form {
+        background: #222;
+        input {
+            background: #ccc;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border: none;
+            width: 80%;
+            padding: 1.2em;
+            outline: none;
+            color: #222;
+            font-weight: 300;
+        }
+
+        button {
+            background: green;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            border: none;
+            width: 20%;
+            padding: 1.2em;
+            outline: none;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+        }
+    }
+}
+
+// Placeholder Styling
+::-webkit-input-placeholder {
+   color: rgba(255, 255, 255, 0.9);
+}
+
+:-moz-placeholder {
+   color: rgba(255, 255, 255, 0.9);  
+}
+
+::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+:-ms-input-placeholder {  
+   color: rgba(255, 255, 255, 0.9);
+}
