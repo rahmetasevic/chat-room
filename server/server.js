@@ -15,25 +15,29 @@ app.get('/', (req, res) => {
     res.status(200).json({message: 'It\s working!'});
 });
 
-
 const users = {};
 io.on('connection', (socket) => {
     console.log('user connected');
 
-    socket.on('welcome_message', (data) => {
+    socket.on('join', (data) => {
         users[socket.id] = {name: data.name};
-        socket.emit('send_welcome', {message: `Welcome ${data.name}!`});
+        socket.emit('message', {user: 'Chat Bot', message: `Welcome ${data.name}!`});
+        socket.broadcast.emit('message', {user: 'Chat Bot', message: `${data.name} has joined the chat!`});
         io.emit('users', Object.values(users));
     });
 
     socket.on("send_message", (data) => {
-        console.log("User Send Message", data);
-        io.emit("receive_message", data);
+        io.emit('message', data);
     });
 
     socket.on('disconnect', () => {
         console.log('user disconnected');
-        delete users[socket.id];
+        const user = users[socket.id];
+
+        if(user) {
+            io.emit('message', {user: 'Chat Bot', message: `${users[socket.id]['name']} has left the chat!`});
+            delete users[socket.id];
+        }
         io.emit("disconnected", socket.id);
     });
     

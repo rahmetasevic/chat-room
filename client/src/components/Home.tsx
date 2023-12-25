@@ -10,10 +10,12 @@ const Home: React.FC = () => {
     const { state } = useLocation();
 
     useEffect(() => {
-        socket.emit('welcome_message', {name: state.username});
+        socket.emit('join', {name: state.username});
 
-        socket.on('send_welcome', (data: any) => {
-            setMessageList([...messageList, {user: 'Chat Bot', message: data.message}]);
+        socket.on('message', (data: any) => {
+            console.log("data:", data)
+            setMessageList(messages => [...messages, data ]);
+            setMessage({text: ''});
         });
 
         socket.on('users', (data: any) => {
@@ -25,15 +27,13 @@ const Home: React.FC = () => {
                 return users.filter((user: any) => user.id !== id);
             });
         });
-    }, [socket]);
 
-    useEffect(()=> {
-        socket.on('receive_message', (data: any) => {
-            setMessageList([...messageList, {user: data.user, message: data.message}]);
-            setMessage({text: ''});
-        });
-
-    }, [socket, message]);
+        return () => {
+            socket.off('message');
+            socket.off('users');
+            socket.off('disconnected');
+        }
+    }, []);
     
     const handleSendMessage = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
