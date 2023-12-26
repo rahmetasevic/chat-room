@@ -80,7 +80,7 @@ const Home: React.FC = () => {
                     </div>
                 </div>
                 <form onSubmit={handleSendMessage}>
-                    <input type="text" value={message.text} onChange={(e) => setMessage({text: e.currentTarget.value})}/>
+                    <input type="text" value={message.text} onChange={(e) => setMessage({text: e.currentTarget.value})} placeholder='Enter a message...'/>
                     <button type='submit'>Send</button>
                 </form>
             </div>

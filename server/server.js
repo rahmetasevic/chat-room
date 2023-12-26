@@ -15,6 +15,9 @@ app.get('/', (req, res) => {
     res.status(200).json({message: 'It\s working!'});
 });
 
+// create room
+// separate logic and create routes
+
 const users = {};
 io.on('connection', (socket) => {
     console.log('user connected');

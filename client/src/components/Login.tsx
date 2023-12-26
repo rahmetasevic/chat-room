@@ -16,13 +16,15 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div className='login-block'>
-            <h1>Join the room</h1>
-            <div className='details-block'>
-                <label>Enter your name: </label>
-                <input type="text" onChange={e => setUsername(e.currentTarget.value)}/>
+        <div className="container">
+            <div className='login-block'>
+                <h1>Join the chat</h1>
+                <div className='details-block'>
+                    <label>Enter your name: </label>
+                    <input type="text" onChange={e => setUsername(e.currentTarget.value)}/>
+                </div>
+                <button type='submit' onClick={handleSubmit}>Join</button>
             </div>
-            <button type='submit' onClick={handleSubmit}>Submit</button>
         </div>
     );
 }

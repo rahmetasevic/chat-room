@@ -1,12 +1,67 @@
-.login-block {
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    grid-gap: 5px;
-}
+// .login-block {
+//     display: grid;
+//     align-items: center;
+//     justify-items: center;
+//     grid-gap: 5px;
+// }
 
-.enter-block {
+// .enter-block {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
+
+$primary: #091f36;
+$secondary: #4f5f76;
+
+$active: rgba(23, 190, 187, 0.8);
+$busy: rgba(252, 100, 113, 0.8);
+$away: rgba(255, 253, 130, 0.8);
+
+.container {
+    background: $primary;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    
+    h1 {
+        margin: 0.5em auto;
+        color: #FFF;
+        text-align: center;
+    }
+
+    .login-block {
+        background: rgba(255, 255, 255, 0.05);
+        width: 550px;
+        height: 300px;
+        border-radius: 0.2em;
+        box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
+        display: grid;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        gap: 15px;
+        color: rgba(255, 255, 255, 0.9);
+
+        input {
+            background: #ccc;
+            border: none;
+            width: 55%;
+            padding: 0.4em;
+            outline: none;
+            color: #222;
+        }
+
+        button {
+            background: green;
+            border: none;
+            width: 25%;
+            padding: 0.6em;
+            outline: none;
+            color: rgba(255, 255, 255, 0.9);
+        }
+    }
 }

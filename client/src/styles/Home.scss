@@ -131,17 +131,25 @@ $away: rgba(255, 253, 130, 0.8);
 
 // Placeholder Styling
 ::-webkit-input-placeholder {
-   color: rgba(255, 255, 255, 0.9);
+    font-weight: bold;
+    opacity: 0.5;
+    color: $primary;
 }
 
 :-moz-placeholder {
-   color: rgba(255, 255, 255, 0.9);  
+    font-weight: bold;
+    opacity: 0.5;
+    color: $primary;
 }
 
 ::-moz-placeholder {
-  color: rgba(255, 255, 255, 0.9);
+    font-weight: bold;
+    opacity: 0.5;
+    color: $primary;
 }
 
 :-ms-input-placeholder {  
-   color: rgba(255, 255, 255, 0.9);
+    font-weight: bold;
+    opacity: 0.5;
+    color: $primary;
 }
